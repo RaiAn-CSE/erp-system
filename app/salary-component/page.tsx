@@ -1,13 +1,11 @@
 import React from "react";
 
-const Page = () => {
+const page = () => {
   return (
     <div className="flex justify-center items-center">
-      <div>
-        <h1>home page</h1>
-      </div>
+      <h1>this is salary-component</h1>
     </div>
   );
 };
 
-export default Page;
+export default page;
