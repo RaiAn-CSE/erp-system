@@ -1,13 +1,12 @@
 import React from "react";
 
-const Page = () => {
+const PayRoll = () => {
   return (
     <div className="flex justify-center items-center">
-      <div>
-        <h1>home page</h1>
-      </div>
+      <h1>THis is payRoll page...?</h1>
+      <div></div>
     </div>
   );
 };
 
-export default Page;
+export default PayRoll;

@@ -16,12 +16,13 @@ import {
 
 import { NavMain } from "@/components/nav-main";
 import { NavProjects } from "@/components/nav-projects";
-import { NavUser } from "@/components/nav-user";
+// import { NavUser } from "@/components/nav-user";
 import { TeamSwitcher } from "@/components/team-switcher";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
+  SidebarGroupLabel,
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar";
@@ -30,26 +31,23 @@ import {
 const data = {
   projects: [
     {
-      name: "Design Engineering",
-      url: "#",
+      name: "Users",
+      url: "/users",
       icon: Frame,
     },
     {
-      name: "Sales & Marketing",
-      url: "#",
+      name: "Payroll",
+      url: "/payroll",
       icon: PieChart,
     },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
-    },
   ],
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
+
+  // user: {
+  //   name: "shadcn",
+  //   email: "m@example.com",
+  //   avatar: "/avatars/shadcn.jpg",
+  // },
+
   teams: [
     {
       name: "Acme Inc",
@@ -67,91 +65,83 @@ const data = {
       plan: "Free",
     },
   ],
+
   navMain: [
     {
-      title: "Users",
-      url: "/users",
-      icon: SquareTerminal,
-      isActive: true,
-      items: [
-        {
-          title: "History",
-          url: "/history",
-        },
-        {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Models",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Settings",
+      title: "Setup",
       url: "#",
       icon: Settings2,
       items: [
         {
-          title: "General",
-          url: "#",
+          title: "Salary Component",
+          url: "/salary-component",
         },
         {
-          title: "Team",
-          url: "#",
+          title: "Salary Scale",
+          url: "/salary-scale",
         },
         {
-          title: "Billing",
-          url: "#",
+          title: "Office Shift",
+          url: "/office-shift",
         },
         {
-          title: "Limits",
-          url: "#",
+          title: "Employment Status",
+          url: "/employment-status",
+        },
+        {
+          title: "Department",
+          url: "/department",
+        },
+        {
+          title: "Designation",
+          url: "/designation",
+        },
+        {
+          title: "Holiday",
+          url: "/holiday",
         },
       ],
+    },
+  ],
+
+  accounts: [
+    {
+      name: "Bank Accounts",
+      url: "/bank-accounts",
+      icon: Frame,
+    },
+    {
+      name: "Income",
+      url: "/income",
+      icon: PieChart,
+    },
+    {
+      name: "Expanse",
+      url: "/expanse",
+      icon: PieChart,
+    },
+    {
+      name: "All Transactions",
+      url: "/all-transactions",
+      icon: PieChart,
+    },
+  ],
+
+  projectManagement: [
+    {
+      name: "Projects",
+      url: "/projects",
+      icon: Frame,
+    },
+    {
+      name: "Tasks",
+      url: "/tasks",
+      icon: PieChart,
+    },
+    {
+      name: "Tickets",
+      url: "/tickets",
+      icon: PieChart,
     },
   ],
 };
@@ -159,16 +149,22 @@ const data = {
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
-      <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
-      </SidebarHeader>
+      <SidebarHeader>{<TeamSwitcher teams={data.teams} />}</SidebarHeader>
+
       <SidebarContent>
-        <NavMain items={data.navMain} />
+        <SidebarGroupLabel>Human Resource Management (HRM)</SidebarGroupLabel>
         <NavProjects projects={data.projects} />
+        <NavMain items={data.navMain} />
+        <SidebarGroupLabel>Accounts</SidebarGroupLabel>
+        <NavProjects projects={data.accounts} />
+        <SidebarGroupLabel>Project Management</SidebarGroupLabel>
+        <NavProjects projects={data.projectManagement} />
       </SidebarContent>
-      <SidebarFooter>
+
+      {/* <SidebarFooter>
         <NavUser user={data.user} />
-      </SidebarFooter>
+      </SidebarFooter> */}
+
       <SidebarRail />
     </Sidebar>
   );
